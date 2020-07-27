@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="user">
+
+<!-- 회원가입 -->
+	<insert id="insert" parameterType="com.javaex.vo.UserVo">
+		<![CDATA[
+			INSERT INTO users VALUES(
+			seq_users_no.nextval,
+			#{id},
+			#{userName},
+			#{password},
+			sysdate
+			)
+       	]]>
+	</insert>
+	
+	<!-- 로그인-->
+	<select id="selectUser" parameterType="com.javaex.vo.UserVo" resultType="com.javaex.vo.UserVo">
+		<![CDATA[
+			select userNo, userName, id
+			from users
+			where id = #{id}
+			and password = #{password}
+       	]]>
+	</select>
+	
+	<!-- 회원가입했을때 블로그 생성	 -->
+<insert id="insertBlog" parameterType="com.javaex.vo.UserVo" >
+
+	<![CDATA[
+			INSERT INTO blog VALUES (
+			#{id},
+			concat(#{userName}, '의 블로그입니다.'),
+			'default'			
+			)
+	]]>
+</insert>
+
+
+
+
+
+</mapper>
