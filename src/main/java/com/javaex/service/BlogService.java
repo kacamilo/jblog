@@ -35,7 +35,7 @@ public class BlogService {
 	}
 	
 	//파일 업로드
-	public String blogUpdate(String id, String blogTitle, MultipartFile file) {
+	public void basicUpdate(String id, String blogTitle, MultipartFile file) {
 		System.out.println("FileUploadService/restore");
 		//////////////// 데이타 추출 ////////////////
 		String saveDir = "c:\\Java Study\\upload";
@@ -56,10 +56,6 @@ public class BlogService {
 		String filePath = saveDir + "\\" + logoFile;
 		System.out.println("filePath:" + filePath);
 		
-		//파일 사이즈
-		long fileSize = file.getSize();
-		System.out.println("fileSize:" + fileSize);
-		
 		//////// 파일 서버에 복사 /////////////////////////////
 		try {
 			byte[] fileData = file.getBytes();
@@ -71,12 +67,8 @@ public class BlogService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
-		
-		//파일 --> 필요한 정보 추출 --> DB에 저장
-		
-	
-		return "";
+		BlogVo blogVo = new BlogVo(id,blogTitle,logoFile);
+		blogDao.blogUpdate(blogVo);
 		
 	}
 	

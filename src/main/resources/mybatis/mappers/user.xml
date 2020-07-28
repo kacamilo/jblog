@@ -39,7 +39,16 @@
 </insert>
 
 
+	<select id="selectById" parameterType="com.javaex.vo.UserVo" resultType="com.javaex.vo.UserVo">
+	<![CDATA[
+				SELECT
+			    		id
+				FROM
+				    users
+				WHERE
+				    id = #{id}
+       	]]>
 
-
+	</select>
 
 </mapper>

@@ -6,11 +6,11 @@
 	<select id="selectOne" parameterType="String"
 		resultType="com.javaex.vo.BlogVo">
 		<![CDATA[
-			select 	id,
-					blogTitle,
-					logoFile 
-			from 	blog 
-			where 	id = #{id}
+			select 	u.id,
+			        b.blogTitle,
+			        b.logoFile 
+			from 	blog b, users u
+			where 	b.id = u.id
 		]]>
 	</select>
 

@@ -4,12 +4,12 @@ public class BlogVo {
 
 	private String id;
 	private String blogTitle;
-	private long logoFile;
+	private String logoFile;
 	
 	public BlogVo () {}
 	
 	
-	public BlogVo(String id, String blogTitle, long logoFile) {
+	public BlogVo(String id, String blogTitle, String logoFile) {
 		this.id = id;
 		this.blogTitle = blogTitle;
 		this.logoFile = logoFile;
@@ -33,11 +33,11 @@ public class BlogVo {
 		this.blogTitle = blogTitle;
 	}
 
-	public long getLogoFile() {
+	public String getLogoFile() {
 		return logoFile;
 	}
 
-	public void setLogoFile(long logoFile) {
+	public void setLogoFile(String logoFile) {
 		this.logoFile = logoFile;
 	}
 

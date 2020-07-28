@@ -6,8 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>JBlog</title>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/jblog.css">
 
+<link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/jblog.css">
+<script type="text/javascript" src="${pageContext.request.contextPath }/assets/js/jquery/jquery-1.12.4.js"></script>
 </head>
 <body>
 	<div id="center-content">
@@ -29,7 +30,8 @@
 		      		</tr>
 		      		<tr>
 		      			<td></td>
-		      			<td id="tdMsg" colspan="2">사용할 수 있는 아이디 입니다</td>
+		      			<td id="tdMsg" colspan="2">사용할 수 있는 아이디입니다</td>
+		      			
 		      		</tr> 
 		      		<tr>
 		      			<td><label for="txtPassword">패스워드</label> </td>
@@ -64,18 +66,15 @@
 	</div>
 
 </body>
-<!--
+
 <script type="text/javascript">
 
 		// 아이디 췍
-		$("#btnIdCheck").on("click", function(){
+		$("#btnIdCheck").on("click",function(){
+			
 			console.log("버튼클릭");
 			var txtId = $("#txtId").val();
 			console.log(txtId);
-			
-			var userInfo = {
-						userId:txtId
-			}
 			
 		//ajax는 파라미터로 받아줘야한다
 		$.ajax({
@@ -83,16 +82,16 @@
 			url : "${pageContext.request.contextPath }/user/idcheck",
 			type : "post",
 			//contentType : "application/json",
-			data : {userId : uId},
+			data : {userId:txtId},
 
 			dataType : "json",
 			success : function(result){
 				console.log(result);
 				/*성공시 처리해야될 코드 작성*/
 				if (result == true){
-					$("#tdMsg").text("사용할 수 있는 아이디 입니다.");
+					alert("사용할 수 있는 아이디 입니다.");
 				} else {
-					$("#tdMsg").text("다른 아이디로 가입해주세요.");
+					alert("다른 아이디로 가입해주세요.");
 				}
 				
 			},
@@ -103,6 +102,5 @@
 	});
 
 </script>
--->
 
 </html>
